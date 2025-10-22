@@ -35,10 +35,8 @@ export const queryResultToJson = <T>(
 }
 
 export const isUrl = (url: string) => {
-  return startsWith(url, 'http')
+  return url.startsWith('http');
 }
-
-export const startsWith = (str: string, prefix: string) => str ? str.indexOf(prefix) === 0 : false
 
 export const endsWith = (str?: string, suffix?: string) => (str && suffix) ? str.includes(suffix, str.length - suffix.length) : false
 
@@ -53,7 +51,7 @@ export const containsOrEscaped = function (str: string, element: string) {
 }
 
 export const unquote = function (str: string) {
-  if (str && startsWith(str, '"') && endsWith(str, '"')) {
+  if (str && str.startsWith('"') && endsWith(str, '"')) {
     return str.substring(1, str.length - 1)
   } else {
     return str
@@ -209,7 +207,7 @@ export const parseJsonCustom = (jsonString: string) => {
 }
 
 export const toSimpleIpAddress = (ipv6: string) => {
-  if (startsWith(ipv6, '::ffff:')) {
+  if (ipv6.startsWith('::ffff:')) {
     return ipv6.substr(7)
   } else if (ipv6 === '::1') {
     return '127.0.0.1'
