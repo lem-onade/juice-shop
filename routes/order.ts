@@ -190,8 +190,9 @@ function calculateApplicableDiscount (basket: BasketModel, req: Request) {
       challengeUtils.solveIf(challenges.manipulateClockChallenge, () => { return campaign.validOn < new Date().getTime() })
       return campaign.discount
     }
+  } else {
+    return 0
   }
-  return 0
 }
 
 const campaigns = {
